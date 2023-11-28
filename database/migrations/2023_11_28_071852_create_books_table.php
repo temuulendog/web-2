@@ -12,23 +12,19 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('author');
-            // Add other fields as needed
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('books', function (Blueprint $table) {
+        $table->id();
+        $table->string('title');
+        $table->string('author');
+        $table->text('description')->nullable();
+        $table->decimal('price', 8, 2);
+        $table->timestamps();
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('books');
-    }
+public function down()
+{
+    Schema::dropIfExists('books');
+}
 };
